@@ -1,4 +1,4 @@
-name: Workflow  para push
+name: Workflow Push
 
 on:
 
@@ -8,29 +8,17 @@ on:
 
 
   schedule:
-    - cron: '0 * * * *'  
+    - cron: '0 * * * *'  # A cada hora
 
 jobs:
   exemplo-job:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest 
 
     steps:
-
+   
       - name: Check out the repository
         uses: actions/checkout@v2
 
- 
+
       - name: Display a message
-        run: echo "Workflow foi executado com sucesso!"
-
-   
-      - name: Create a log file
-        run: echo "Este é um log gerado pelo workflow." > log.txt
-
-
-      - name: Upload log file
-        uses: actions/upload-artifact@v2
-        with:
-          name: log
-          path: log.txt
-
+        run: echo "O workflow foi executado!"
