@@ -1,28 +1,36 @@
-name: Example Workflow
-
+name: Workflow  para push
 
 on:
+
   push:
     branches:
-      - main 
+      - main  
+
+
   schedule:
     - cron: '0 * * * *'  
 
 jobs:
-  build:
-    runs-on: ubuntu-latest 
+  exemplo-job:
+    runs-on: ubuntu-latest  
 
     steps:
+
       - name: Check out the repository
-        uses: actions/checkout@v2 
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+ 
+      - name: Display a message
+        run: echo "Workflow foi executado com sucesso!"
+
+   
+      - name: Create a log file
+        run: echo "Este é um log gerado pelo workflow." > log.txt
+
+
+      - name: Upload log file
+        uses: actions/upload-artifact@v2
         with:
-          node-version: '14'  
+          name: log
+          path: log.txt
 
-      - name: Install dependencies
-        run: npm install 
-
-      - name: Run tests
-        run: npm test  
